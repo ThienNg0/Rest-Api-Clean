@@ -1,5 +1,6 @@
 # REST API áp dụng kiến trúc Sạch 
 Kiến trúc Sạch (Clean Architecture) là một phương pháp thiết kế phần mềm nhằm tách biệt các phần của ứng dụng để đảm bảo tính mở rộng, dễ bảo trì và kiểm thử. Trong mô hình này, các thành phần của ứng dụng được tổ chức theo nhiều lớp, với mỗi lớp có một trách nhiệm riêng biệt, giúp giảm thiểu sự phụ thuộc giữa các thành phần.
+
 ![image](https://github.com/user-attachments/assets/849e0fba-a2fb-4d75-8a8f-75bf57d77619)
 
 ## Overview
