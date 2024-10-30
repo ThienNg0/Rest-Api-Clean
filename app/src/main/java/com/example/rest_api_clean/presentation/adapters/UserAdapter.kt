@@ -1,30 +1,28 @@
 package com.example.rest_api_clean.presentation.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.rest_api_clean.R
-import com.example.rest_api_clean.data.model.UserEntity
+import com.example.rest_api_clean.databinding.UserItemBinding
+import com.example.rest_api_clean.presentation.model.UserModel
 
-class UserAdapter(private val userList: List<UserEntity>) : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
+class UserAdapter(private val userList: List<UserModel>) : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
-    class UserViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val nameTextView: TextView = view.findViewById(R.id.nameTextView)
-        val emailTextView: TextView = view.findViewById(R.id.emailTextView)
+    class UserViewHolder(private val binding: UserItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(user: UserModel) {
+            binding.user = user
+            binding.executePendingBindings() // Đảm bảo cập nhật giao diện ngay lập tức
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.user_item, parent, false)
-        return UserViewHolder(view)
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = UserItemBinding.inflate(inflater, parent, false)
+        return UserViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
-        val user = userList[position]
-        holder.nameTextView.text = user.name
-        holder.emailTextView.text = user.email
+        holder.bind(userList[position])
     }
 
     override fun getItemCount(): Int {
